@@ -6,12 +6,12 @@ const protect = async (req, res, next) => {
     let token;
     if (
         req.headers.authorization &&
-        req.headers.authorizatino.startWith("Bearer")
+        req.headers.authorization.startsWith("Bearer")
     ) {
         try {
             token = req.headers.authorization.split(" ")[1];
-            const decoded = jwt.veryfy(token, process.env.JWT_SECRET);
-            req.user = await User.frindByID(decoded.id).select("-password");
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            req.user = await User.findByID(decoded.id).select("-password");
             next();
         } catch (error) {
             res.status(401).json({message:"Not authorized,token failed"});
@@ -32,4 +32,4 @@ const authorize = (...roles) => {
   };
 };
 
-module.exports = {protect, authorized};
+module.exports = {protect, authorize};

@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const applicationSchema = new mongoose.Schema(
     {
         job: {
-            type: mingoose.Schema.Types.ObjectID,
-            ref: "job",
+            type: mongoose.Schema.Types.ObjectID,
+            ref: "Job",
             required: true,
         },
-        application: {
+        applicant: {
             type: mongoose.Schema.Types.ObjectID,
             ref: "User",
             required: true,
@@ -27,5 +27,5 @@ const applicationSchema = new mongoose.Schema(
      { timestamps: true}
     );
     
-    applicationSchema.index({job: 1, application: 1}, { unique: true});
+    applicationSchema.index({job: 1, applicant: 1}, { unique: true});
     module.exports = mongoose.model("Application", applicationSchema);
