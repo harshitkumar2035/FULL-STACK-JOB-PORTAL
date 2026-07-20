@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 import JobList from "./pages/JobList";
 import JobDetail from "./pages/JobDetail";
 import Dashboard from "./pages/Dashboard";
-import PostJob from "./pages/Applications";
+import PostJob from "./pages/PostJob";
 import Application from "./pages/Applications";
 import NotFound from "./pages/NotFound";
 
