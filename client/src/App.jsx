@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import PostJob from "./pages/PostJob";
 import Applications from "./pages/Applications";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/Footer";
 
 function App() {
    return (
