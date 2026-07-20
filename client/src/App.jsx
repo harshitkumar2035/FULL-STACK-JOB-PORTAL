@@ -8,7 +8,7 @@ import JobList from "./pages/JobList";
 import JobDetail from "./pages/JobDetail";
 import Dashboard from "./pages/Dashboard";
 import PostJob from "./pages/PostJob";
-import Application from "./pages/Applications";
+import Applications from "./pages/Applications";
 import NotFound from "./pages/NotFound";
 
 function App() {
