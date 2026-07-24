@@ -1,3 +1,5 @@
+import Button from "./comnon/Button/Button";
+
 function Hero() {
   return (
     <section className="hero">
@@ -8,7 +10,9 @@ function Hero() {
      </p>
       <div className="hero-buttons">
         <button>Search Jobs</button>
-        <button>Browse Jobs</button>
+        <button variant="secondary">
+           Browse Jobs
+        </button>
       </div>
     </section>
   );
