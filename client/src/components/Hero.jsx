@@ -1,4 +1,4 @@
-import Button from "./comnon/Button/Button";
+import Button from "./common/Button/Button";
 
 function Hero() {
   return (

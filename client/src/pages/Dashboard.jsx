@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";  
 import axios from "axios";  
 import { useAuth } from "../context/AuthContext";  
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";  
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "react";  
 
 const Dashboard = () => {  
   const { user } = useAuth();  
