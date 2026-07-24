@@ -1,0 +1,28 @@
+.login-form-container{
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+}
+
+.login-form{
+    width:100%;
+    max-width:420px;
+    background:white;
+    padding:40px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.login-form h2{
+    font-size:32px;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+.login-form p{
+    text-align:center;
+    color:var(--gray);
+    margin-bottom:30px;
+}
