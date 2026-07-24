@@ -50,12 +50,12 @@ const fetchJobseekerStats = async () => {
 
 {user?.role === "recruiter" && (  
    <div className="bg-white rounded-lg shadow p-6">  
-     <h2 className="text-xl font-bold mb-4">Recent Applications</h2>  
-      <div className="space-y-4">  
-        {recentApplications.map((app) => (  
-         <div  
-           key={app._id}  
-             className="flex items-center justify-between border-b pb-4"  
+    <h2 className="text-xl font-bold mb-4">Recent Applications</h2>  
+  <div className="space-y-4">  
+      {recentApplications.map((app) => (  
+   <div  
+       key={app._id}  
+     className="flex items-center justify-between border-b pb-4"  
               >  
 <div>  
     <p className="font-medium">{app.applicant?.name}</p>  
@@ -64,14 +64,14 @@ const fetchJobseekerStats = async () => {
         </p>  
 </div>  
      <span  
-        className={`px-3 py-1 rounded-full text-sm ${  
-           app.status === "pending"  
-                ? "bg-yellow-100 text-yellow-800"  
-                : app.status === "accepted"  
-                 ? "bg-green-100 text-green-800"  
-                : app.status === "rejected"  
-                ? "bg-red-100 text-red-800"  
-                : "bg-gray-100 text-gray-800"  
+     className={`px-3 py-1 rounded-full text-sm ${  
+   app.status === "pending"  
+          ? "bg-yellow-100 text-yellow-800"  
+          : app.status === "accepted"  
+         ? "bg-green-100 text-green-800"  
+          : app.status === "rejected"  
+          ? "bg-red-100 text-red-800"  
+          : "bg-gray-100 text-gray-800"  
             }`}  
         >  
 {app.status}  
