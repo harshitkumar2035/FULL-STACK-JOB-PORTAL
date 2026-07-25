@@ -1,23 +1,6 @@
-.login-card {
-  max-width: 420px;
-  margin: 60px auto;
-  background: white;
-  padding: 30px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.login-card h2 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.login-card p {
-  text-align: center;
-  color: var(--gray);
-  margin-bottom: 25px;
-}
-
-.login-card button {
+.login-box {
   width: 100%;
+  max-width: 440px;
+  margin: 60px auto;
+  padding: 36px;
 }

@@ -1,91 +1,106 @@
 import { useState } from "react";
-import Input from "../common/Input/Input";
-import Button from "../common/Button/Button";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import "./LoginForm.css";
 
 function LoginForm() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const [errors, setErrors] = useState({});
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  function handleChange(e) {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-    // User typing -> old error remove
-    setErrors({
-      ...errors,
-      [e.target.name]: "",
-    });
-  }
-  function validateForm() {
-    const newErrors = {};
-    // Email Validation
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
-    ) {
-      newErrors.email = "Enter a valid email";
-    }
-    // Password Validati
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      newErrors.password =
-        "Password must be at least 6 characters";
-    }
-    return newErrors;
-  }
-  function handleSubmit(e) {
+  const [error, setError] = useState("");
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
     setLoading(true);
-    console.log("Login Data:", formData);
-    setTimeout(() => {
+    setError("");
+
+    try {
+      await login(email, password);
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.response?.data?.message || "Invalid credentials. Please try again.");
+    } finally {
       setLoading(false);
-      alert("Validation Passed ✅");
-    }, 1500);
-  }
+    }
+  };
 
   return (
-    <div className="login-card">
-      <h2>Welcome Back</h2>
-      <p>Login to continue</p>
+    <div className="login-box glass-panel animate-fade-in">
+      <div style={{ textAlign: "center", marginBottom: "28px" }}>
+        <h2 style={{ fontSize: "1.8rem", fontWeight: "800" }}>Welcome Back</h2>
+        <p style={{ color: "var(--text-sub)", fontSize: "0.95rem" }}>
+          Log in to manage applications or post jobs
+        </p>
+      </div>
+
+      {error && <div className="alert alert-error">{error}</div>}
+
       <form onSubmit={handleSubmit}>
-   <Input
-     label="Email"
-      name="email"
-       type="email"
-      placeholder="Enter your email"
-        value={formData.email}
-      onChange={handleChange}
-        error={errors.email}
-        />
-    <Input
-        label="Password"
-        name="password"
-        type="password"
-        placeholder="Enter your password"
-        value={formData.password}
-        onChange={handleChange}
-        error={errors.password}
-        />
-   <Button
-      type="submit"
-        loading={loading}
+        <div className="form-group">
+          <label className="form-label">Email Address</label>
+          <input
+            type="email"
+            className="form-input"
+            placeholder="name@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            className="form-input"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="btn btn-primary"
+          style={{ width: "100%", marginTop: "12px" }}
+          disabled={loading}
         >
-      Login
-      </Button>
-            </form>
-   </div>
+          {loading ? "Logging in..." : "Log In"}
+        </button>
+      </form>
+
+      {/* Demo Credentials Quick-Fill */}
+      <div style={{ marginTop: "24px", paddingTop: "20px", borderTop: "1px solid var(--border-glass)", fontSize: "0.85rem" }}>
+        <p style={{ color: "var(--text-muted)", marginBottom: "8px", fontWeight: "600" }}>Quick Demo Logins:</p>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+          <button
+            type="button"
+            className="btn btn-secondary btn-sm"
+            onClick={() => { setEmail("jobseeker@example.com"); setPassword("123456"); }}
+          >
+            👤 Demo Jobseeker
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary btn-sm"
+            onClick={() => { setEmail("recruiter@techcorp.com"); setPassword("123456"); }}
+          >
+            🏢 Demo Recruiter
+          </button>
+        </div>
+      </div>
+
+      <div style={{ textAlign: "center", marginTop: "24px", fontSize: "0.9rem", color: "var(--text-sub)" }}>
+        Don't have an account?{" "}
+        <Link to="/register" style={{ color: "var(--primary)", fontWeight: "600" }}>
+          Sign up here
+        </Link>
+      </div>
+    </div>
   );
 }
+
 export default LoginForm;

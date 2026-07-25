@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -9,27 +11,60 @@ import JobDetail from "./pages/JobDetail";
 import Dashboard from "./pages/Dashboard";
 import PostJob from "./pages/PostJob";
 import Applications from "./pages/Applications";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-import Footer from "./components/Footer";
 
 function App() {
-   return (
+  return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/jobs" element={<JobList />} />
-        <Route path="/jobs/:id" element={<JobDetail />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/post-job" element={<PostJob />} />
-        <Route
-          path="/applications"
-          element={<Applications />}
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <div className="app-container">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/jobs" element={<JobList />} />
+            <Route path="/jobs/:id" element={<JobDetail />} />
+
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/post-job"
+              element={
+                <ProtectedRoute allowedRoles={["recruiter", "admin"]}>
+                  <PostJob />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/applications"
+              element={
+                <ProtectedRoute>
+                  <Applications />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
