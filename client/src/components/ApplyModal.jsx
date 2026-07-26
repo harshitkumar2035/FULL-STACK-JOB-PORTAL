@@ -43,7 +43,7 @@ function ApplyModal({ job, onClose, onSuccess }) {
       left: 0,
       right: 0,
       bottom: 0,
-      background: "rgba(0, 0, 0, 0.75)",
+      background: "rgba(15, 23, 42, 0.45)",
       backdropFilter: "blur(8px)",
       zIndex: 1000,
       display: "flex",
@@ -51,7 +51,7 @@ function ApplyModal({ job, onClose, onSuccess }) {
       justifyContent: "center",
       padding: "20px"
     }}>
-      <div className="glass-panel animate-fade-in" style={{ width: "100%", maxWidth: "550px", padding: "32px", position: "relative" }}>
+      <div className="glass-panel animate-fade-in" style={{ width: "100%", maxWidth: "550px", padding: "32px", position: "relative", background: "var(--bg-surface)", boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}>
         <button
           onClick={onClose}
           style={{

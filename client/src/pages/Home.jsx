@@ -191,7 +191,7 @@ function Home() {
         <div className="container">
           <div className="glass-panel" style={{
             padding: "50px 40px",
-            background: "linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%)",
+            background: "linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%)",
             border: "1px solid rgba(99, 102, 241, 0.3)",
             display: "flex",
             flexWrap: "wrap",

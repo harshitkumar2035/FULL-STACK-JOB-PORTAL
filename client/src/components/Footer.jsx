@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer style={{
-      background: "rgba(10, 13, 20, 0.95)",
+      background: "var(--bg-surface)",
       borderTop: "1px solid var(--border-glass)",
       padding: "60px 0 30px 0",
-      marginTop: "auto"
+      marginTop: "auto",
+      boxShadow: "0 -2px 10px rgba(0, 0, 0, 0.02)"
     }}>
       <div className="container">
         <div style={{
@@ -18,7 +19,7 @@ function Footer() {
           <div>
             <Link to="/" style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "1.4rem", fontWeight: "800", marginBottom: "16px" }}>
               <span style={{
-                width: "32px", height: "32px", background: "linear-gradient(135deg, var(--primary), var(--accent))", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem"
+                width: "32px", height: "32px", background: "linear-gradient(135deg, var(--primary), var(--accent))", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", color: "#ffffff"
               }}>⚡</span>
               <span>Job<span style={{ color: "var(--primary)" }}>Sphere</span></span>
             </Link>
@@ -66,7 +67,7 @@ function Footer() {
           color: "var(--text-muted)"
         }}>
           <div>© {new Date().getFullYear()} JobSphere Inc. All rights reserved.</div>
-          <div>Designed with Glassmorphic Aesthetics</div>
+          <div>Designed with Modern Light Aesthetics</div>
         </div>
       </div>
     </footer>
