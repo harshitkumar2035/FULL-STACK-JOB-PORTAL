@@ -194,9 +194,9 @@ const seedData = async () => {
     await jobs[0].save();
 
     console.log("\n=============================================");
-    console.log("🎉 Database Seeded Successfully!");
+    console.log(" Database Seeded Successfully!");
     console.log("---------------------------------------------");
-    console.log("🔑 Sample Credentials:");
+    console.log(" Sample Credentials:");
     console.log("   Jobseeker 1 : jobseeker@example.com / 123456");
     console.log("   Jobseeker 2 : priya@example.com     / 123456");
     console.log("   Recruiter 1 : recruiter@techcorp.com / 123456");
