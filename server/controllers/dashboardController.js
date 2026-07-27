@@ -1,5 +1,5 @@
 const Job = require("../models/Job");
-const Application = require("../models/Application");
+const Application = require("../models/application");
 
 const getRecruiterStats = async (req, res) => {
   try {
